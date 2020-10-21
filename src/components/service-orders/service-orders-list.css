@@ -1,0 +1,7 @@
+.sticky-header{
+  position:sticky;
+  position:-webkit-sticky;
+  background-color:#fff;
+  top:0;
+  text-align:left;
+}

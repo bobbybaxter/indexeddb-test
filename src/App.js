@@ -1,26 +1,25 @@
-import React from 'react';
-import logo from './logo.svg';
+import React, { Component } from 'react';
 import './App.css';
+import { Route, Switch } from 'react-router-dom';
+import ServiceOrdersListComponent from './components/service-orders/service-orders-list';
+import HomeComponent from './components/home/home-component';
+import ServiceOrderDetailComponent from './components/service-orders/service-order-detail';
+import NotFoundComponent from './components/errors/not-found';
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+class App extends Component {
+  render() {
+    return (
+      <div>
+        <Switch>
+          <Route exact path="/" component={HomeComponent} />
+          <Route path="/serviceOrders/bucket/:bucket/businessUnit/:businessUnit/status/:status" component={ServiceOrdersListComponent} />
+          <Route exact path="/serviceOrders/:id" component={ServiceOrderDetailComponent} />
+          <Route component={NotFoundComponent} />
+        </Switch>
+      </div >
+
+    );
+  }
 }
 
 export default App;
